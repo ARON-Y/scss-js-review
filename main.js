@@ -13,4 +13,25 @@ for (let el of articles) {
   el.addEventListener("mouseleave", function (e) {
     e.currentTarget.querySelector("video").pause();
   });
+
+  el.addEventListener("click", function (e) {
+    aside.classList.add("on");
+
+    let art_h2 = e.currentTarget.querySelector("h2").innerText;
+    let art_p = e.currentTarget.querySelector("p").innerText;
+    let art_video_src = e.currentTarget
+      .querySelector("video")
+      .getAttribute("src");
+
+    aside.querySelector("h2").innerText = art_h2;
+    aside.querySelector("p").innerText = art_p;
+    aside.querySelector("video").setAttribute("src", art_video_src);
+
+    aside.querySelector("video").play();
+  });
 }
+
+close.addEventListener("click", function () {
+  aside.classList.remove("on");
+  aside.querySelector("video").pause();
+});
